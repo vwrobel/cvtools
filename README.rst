@@ -20,13 +20,22 @@
 
 CV tools to classify and track objects in videos.
 
+.. image:: https://raw.githubusercontent.com/vwrobel/cvtools/master/example/vids/aouta/aouta_filter_color_select.gif
+    :alt: color_select filter example
+    :width: 100%
+    :align: center
+
+.. image:: https://raw.githubusercontent.com/vwrobel/cvtools/master/example/vids/aouta/aouta_tracker_camshift.gif
+    :alt: camshift tracker example
+    :width: 100%
+    :align: center
 
 * Free software: MIT license
 * Documentation: https://scopethis-cvtools.readthedocs.io.
 
 
-What is this package?
----------------------
+What is it?
+-----------
 It is a set of python processes (video filters, trackers, classifiers...) that can be chained and called simply with the wrapper function apply_comp_process_to_video.
 
 Processes can be based on any package, it mainly use openCV for the moment.
@@ -34,15 +43,20 @@ Processes can be based on any package, it mainly use openCV for the moment.
 Its main goal is to process videos on [COMING SOON].
 
 
-How to use this package?
-------------------------
+How to install it?
+------------------
+Check the example.
+
+
+How to use it?
+--------------
 Check the example.
 
 
 TO DO
 -----
 
-* More processes
+* Create more processes
 * Develop classifier object
 * GUI
 
