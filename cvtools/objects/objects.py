@@ -52,7 +52,7 @@ class CompProcess:
 
 class CompFilter(CompProcess):
     def __init__(self, name, process_name_list, param_list):
-        CompProcess.__init__(self, name, 'filter', process_name_list, param_list)
+        CompProcess.__init__(self, name, 'video filter', process_name_list, param_list)
 
     def run(self, cap, writer):
         process_filters = self.get_processes_from_names()
