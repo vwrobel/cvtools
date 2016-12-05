@@ -81,7 +81,7 @@ def test_CompProcess():
     """Test CompProcess
     """
     name = 'test'
-    type = 'filter'
+    type = 'video filter'
     process_name_list = ['color_select']
     param_list = [{'lower': [17, 15, 100], 'upper': [50, 56, 200]}]
     comp_process = CompProcess(name, type, process_name_list, param_list)

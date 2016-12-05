@@ -97,9 +97,10 @@ class CompTracker(CompProcess):
                 tracked_frame, step_input_list[ind] = process_tracker.step(i, frame, tracked_frame, param,
                                                                            init_input_list[ind], step_input_list[ind])
 
-            computed_selection_list[ind].append(
-                step_input_list[ind]['computed_selection'].scale(width, height, invert=True)
-            )
+            if step_input_list[ind]['track_started']:
+                computed_selection_list[ind].append(
+                    step_input_list[ind]['computed_selection'].scale(width, height, invert=True)
+                )
             _, frame = cap.read()
             writer.write(tracked_frame)
         return computed_selection_list

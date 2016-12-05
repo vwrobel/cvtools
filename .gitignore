@@ -64,3 +64,4 @@ target/
 .idea
 /example/vids/aouta/aouta_filter_color_select.mp4
 /example/vids/aouta/aouta_tracker_camshift.mp4
+/example/example_dev.py

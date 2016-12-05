@@ -1,5 +1,8 @@
 import cv2
 
+PARAM_DEFAULT = {
+}
+
 
 def init(cap, param):
     init_input = None

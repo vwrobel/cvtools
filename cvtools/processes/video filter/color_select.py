@@ -2,7 +2,15 @@ import cv2
 import numpy as np
 
 
+PARAM_DEFAULT = {
+        'lower': [17, 15, 100],
+        'upper': [50, 56, 200]
+    }
+
+
 def init(cap, param):
+    if not param:
+        param = PARAM_DEFAULT
     lower_color_bound = np.array(param['lower'], dtype='uint8')
     upper_color_bound = np.array(param['upper'], dtype='uint8')
     background_color = (255, 255, 255)

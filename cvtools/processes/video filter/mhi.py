@@ -3,8 +3,17 @@ import numpy as np
 from skimage import img_as_ubyte
 import warnings
 
+PARAM_DEFAULT = {
+    'sigma_blur': 9,
+    'threshold': 5,
+    'kernel_size': 5,
+    'tau': 200
+}
+
 
 def init(cap, param):
+    if not param:
+        param = PARAM_DEFAULT
     sigma_blur = param['sigma_blur']
     _, frame0 = cap.retrieve()
     gray = cv2.cvtColor(frame0, cv2.COLOR_BGR2GRAY) * 1.0

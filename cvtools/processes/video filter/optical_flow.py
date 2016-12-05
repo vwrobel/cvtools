@@ -1,8 +1,19 @@
 import cv2
 import numpy as np
 
+PARAM_DEFAULT = {
+    'pyr_scale': 0.5,
+    'levels': 3,
+    'win_size': 15,
+    'iterations': 3,
+    'poly_n': 5,
+    'poly_sigma': 1.1
+}
+
 
 def init(cap, param):
+    if not param:
+        param = PARAM_DEFAULT
     iterations = param['iterations']
     levels = param['levels']
     pyr_scale = param['pyr_scale']
