@@ -1,0 +1,5 @@
+# cv2.imwrite('hsv_roi0.jpg', hsv_roi[:, :, 0])
+# cv2.imwrite('hsv_roi1.jpg', hsv_roi[:, :, 1])
+# cv2.imwrite('hsv_roi2.jpg', hsv_roi[:, :, 2])
+# cv2.imwrite('hsv' + str(i) + '.jpg', hsv_masked)
+#cv2.imwrite('backproj' + str(i) + '.jpg', dst)

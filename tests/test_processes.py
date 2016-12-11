@@ -93,7 +93,9 @@ tracker_meanshift = ('tracker_meanshift', {
     'param_list': [{
         'lower_color_bound': [0.0, 0.0, 0.0],
         'upper_color_bound': [255.0, 255.0, 255.0],
-        'color_channel': [2]
+        'color_channel': [2],
+        'channel_range': [0, 180],
+        'bin_nb': [16]
     }] * len(selection_list),
     'selection_list': selection_list
 })
@@ -104,7 +106,9 @@ tracker_camshift = ('tracker_camshift', {
     'param_list': [{
         'lower_color_bound': [0.0, 0.0, 0.0],
         'upper_color_bound': [255.0, 255.0, 255.0],
-        'color_channel': [2]
+        'color_channel': [2],
+        'channel_range': [0, 180],
+        'bin_nb': [16]
     }] * len(selection_list),
     'selection_list': selection_list
 })

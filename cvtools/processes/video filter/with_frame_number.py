@@ -1,6 +1,7 @@
 import cv2
 
 PARAM_DEFAULT = {
+    'number_color': [0, 0, 0]
 }
 
 
