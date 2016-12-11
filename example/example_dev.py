@@ -1,6 +1,6 @@
 import sys
 
-from cvtools import apply_comp_process_to_video, SelectionWindow, CompTracker, CompFilter
+from cvtools import process_vid, SelectionWindow, CompTracker, CompFilter
 
 
 def example():
@@ -46,7 +46,7 @@ def example():
     # The path of the tracked video
     tracked_vid_filepath = vid_filepath.replace('.mp4', '_tracker_meanshift_mhi.avi')
 
-    apply_comp_process_to_video(vid_filepath, tracked_vid_filepath, tracker)
+    process_vid(vid_filepath, tracked_vid_filepath, tracker)
 
 
 if __name__ == '__main__':

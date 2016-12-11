@@ -61,7 +61,7 @@ class CompFilter(CompProcess):
                     for ind, process_filter in enumerate(process_filters)]
         init_input_list = [init_input for init_input, _ in init_res]
         step_input_list = [step_input for _, step_input in init_res]
-        cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+        cap.set(cv2.CAP_PROP_POS_AVI_RATIO, 0)
         _, frame = cap.retrieve()
         for i in tqdm(range(nbf)):
             for ind, process_filter in enumerate(process_filters):
@@ -87,7 +87,7 @@ class CompTracker(CompProcess):
                     for ind, process_tracker in enumerate(process_trackers)]
         init_input_list = [init_input for init_input, _ in init_res]
         step_input_list = [step_input for _, step_input in init_res]
-        cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+        cap.set(cv2.CAP_PROP_POS_AVI_RATIO, 0)
         computed_selection_list = [[]] * len(self.selection_list)
         _, frame = cap.retrieve()
         for i in tqdm(range(nbf)):

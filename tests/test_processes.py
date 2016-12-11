@@ -13,7 +13,7 @@ import os.path
 from distutils import dir_util
 
 import pytest
-from ..cvtools.main import apply_comp_process_to_video
+from ..cvtools.main import process_vid
 from ..cvtools.objects import SelectionWindow, CompFilter, CompTracker
 
 
@@ -80,7 +80,7 @@ class TestFilters:
         comp_filter = CompFilter(name, process_name_list, param_list)
         test_vid_path = str(vid_dir.join('test_vid.mp4'))
         filtered_test_vid_path = str(vid_dir.join(name + '_test_vid.avi'))
-        apply_comp_process_to_video(test_vid_path, filtered_test_vid_path, comp_filter)
+        process_vid(test_vid_path, filtered_test_vid_path, comp_filter)
 
 
 selection1 = SelectionWindow(0.1, 0.2, 0.3, 0.4, 0, (100, 100, 0), 'manual', 'selection1')
@@ -126,5 +126,5 @@ class TestTrackers:
         comp_tracker = CompTracker(name, process_name_list, param_list, selection_list)
         test_vid_path = str(vid_dir.join('test_vid.mp4'))
         tracked_test_vid_path = str(vid_dir.join(name + '_test_vid.avi'))
-        computed_selection_list = apply_comp_process_to_video(test_vid_path, tracked_test_vid_path, comp_tracker)
+        computed_selection_list = process_vid(test_vid_path, tracked_test_vid_path, comp_tracker)
         assert len(computed_selection_list) > 0

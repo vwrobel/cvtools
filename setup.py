@@ -19,28 +19,28 @@ test_requirements = [
 ]
 
 setup(
-    name='scopethis_cvtools',
+    name='cvtools',
     version='0.1.0',
     description="CV tools to spot and track objects in a video",
     long_description=readme + '\n\n' + history,
     author="Valerian Wrobel",
     author_email='valerian.wrobel@gmail.com',
-    url='https://github.com/vwrobel/scopethis_cvtools',
+    url='https://github.com/vwrobel/cvtools',
     packages=[
-        'scopethis_cvtools',
+        'cvtools',
     ],
-    package_dir={'scopethis_cvtools':
-                 'scopethis_cvtools'},
+    package_dir={'cvtools':
+                 'cvtools'},
     entry_points={
         'console_scripts': [
-            'scopethis_cvtools=scopethis_cvtools.cli:main'
+            'cvtools=cvtools.cli:main'
         ]
     },
     include_package_data=True,
     install_requires=requirements,
     license="MIT license",
     zip_safe=False,
-    keywords='scopethis_cvtools',
+    keywords='cvtools',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',

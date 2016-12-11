@@ -1,2 +1,2 @@
 # -*- coding: utf-8 -*-
-from .common_functions import get_writer, get_vid_details, convert_from_avi
+from .common_functions import get_writer, get_vid_details

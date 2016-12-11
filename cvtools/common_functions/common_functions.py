@@ -16,24 +16,9 @@ def get_writer(cap, processed_vid_filepath):
     if not os.path.exists(os.path.dirname(processed_vid_filepath)):
         os.makedirs(os.path.dirname(processed_vid_filepath))
     (nbf, fps, width, height) = get_vid_details(cap)
-    if os.environ['SYSTEM'] == 'linux':
-        fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    else:
-        fourcc = cv2.VideoWriter_fourcc(*'MJPG')
+    fourcc = cv2.VideoWriter_fourcc(*'avc1')
+
     writer = cv2.VideoWriter(processed_vid_filepath, fourcc, fps,
                              (width, height), True)
     return writer
 
-
-def convert_from_avi(vid_filepath):
-    mp4_vid_filepath = vid_filepath.replace('.avi', '.mp4')
-    if os.path.exists(mp4_vid_filepath):
-        os.remove(mp4_vid_filepath)
-    ffmpegpath = os.environ['FFMPEGPATH']
-    ff = FFmpeg(
-        executable=ffmpegpath,
-        inputs={vid_filepath: None},
-        outputs={mp4_vid_filepath: None}
-    )
-    ff.run()
-    os.remove(vid_filepath)
