@@ -12,10 +12,8 @@ PARAM_DEFAULT = {
 
 
 def init(cap, param):
-    if not param:
-        param = PARAM_DEFAULT
     sigma_blur = param['sigma_blur']
-    _, frame0 = cap.retrieve()
+    _, frame0 = cap.read()
     gray = cv2.cvtColor(frame0, cv2.COLOR_BGR2GRAY) * 1.0
     gray_blur = cv2.GaussianBlur(gray, (sigma_blur, sigma_blur), 0)
     mhi = np.zeros(gray.shape)

@@ -1,5 +1,3 @@
-import sys
-
 from cvtools import process_vid, SelectionWindow, CompTracker, CompFilter
 
 
@@ -13,28 +11,30 @@ def example():
         ['color_select'],
         [{'lower': [17, 15, 100], 'upper': [50, 56, 200]}])
 
-    # The path of the filtered video (.avi for OpenCV writer to work)
     filtered_vid_filepath = vid_filepath.replace('.mp4', '_filter_color_select.mp4')
 
-    process_vid(vid_filepath, filtered_vid_filepath, filter_color_select, convert=False)
+    process_vid(vid_filepath, filtered_vid_filepath, filter_color_select)
 
-    # # The object you want to track (x, y , w, h are ratios between position and frame dimension)
-    # selection = SelectionWindow(0.72, 0.74, 0.054, 0.19, 0, (100, 100, 0), 'manual', 'aouta')
-    # selection_list = [selection]
-    #
-    # # The tracker you want to apply
-    # tracker_camshift = CompTracker(
-    #     'tracker_camshift',
-    #     ['camshift'],
-    #     [{'lower_color_bound': [0.0, 0.0, 0.0],
-    #       'upper_color_bound': [255.0, 255.0, 255.0],
-    #       'color_channel': [2]}],
-    #     selection_list)
-    #
-    # # The path of the tracked video
-    # tracked_vid_filepath = vid_filepath.replace('.mp4', '_tracker_camshift.avi')
-    #
-    # process_vid(vid_filepath, tracked_vid_filepath, tracker_camshift)
+    # The object you want to track (x, y , w, h are ratios between position and frame dimension)
+    selection = SelectionWindow(0.72, 0.74, 0.054, 0.19, 0, (100, 100, 0), 'manual', 'aouta')
+    selection_list = [selection]
+
+    # The tracker you want to apply
+    tracker_camshift = CompTracker(
+        'tracker_camshift',
+        ['camshift'],
+        [{'lower_color_bound': [0.0, 0.0, 0.0],
+          'upper_color_bound': [255.0, 255.0, 255.0],
+          'color_channel': [2],
+          'channel_range': [40.0, 120.0],
+          'bin_nb': [180]
+          }],
+        selection_list)
+
+    # The path of the tracked video
+    tracked_vid_filepath = vid_filepath.replace('.mp4', '_tracker_camshift.mp4')
+
+    process_vid(filtered_vid_filepath, tracked_vid_filepath, tracker_camshift)
 
 
 if __name__ == '__main__':

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from .main import process_vid
-from .objects import SelectionWindow, CompProcess, CompFilter, CompTracker
+from .objects import *
 
 __author__ = """Valerian Wrobel"""
 __email__ = 'valerian.wrobel@gmail.com'

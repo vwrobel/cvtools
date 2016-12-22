@@ -68,3 +68,4 @@ target/
 /example/vids/planeur/
 /example/vids/quad/
 .env
+/gui/

@@ -12,8 +12,6 @@ PARAM_DEFAULT = {
 
 
 def init(cap, param):
-    if not param:
-        param = PARAM_DEFAULT
     iterations = param['iterations']
     levels = param['levels']
     pyr_scale = param['pyr_scale']

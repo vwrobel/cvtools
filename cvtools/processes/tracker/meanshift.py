@@ -1,41 +1,35 @@
-from copy import copy
-
 import cv2
-import numpy as np
-
+from copy import copy
+from ..featurer.hsv_hist import hsv_hist
 
 PARAM_DEFAULT = {
-        'lower_color_bound': [0.0, 0.0, 0.0],
-        'upper_color_bound': [255.0, 255.0, 255.0],
-        'color_channel': [2],
-        'channel_range': [0, 180],
-        'bin_nb': [16]
-    }
+    'lower_color_bound': [0.0, 0.0, 0.0],
+    'upper_color_bound': [255.0, 255.0, 255.0],
+    'color_channel': [2],
+    'channel_range': [0, 180],
+    'bin_nb': [16]
+}
 
 
 def init(cap, param, selection):
-    t = selection.t
-    cap.set(cv2.CAP_PROP_POS_FRAMES, t)
-    _, frame = cap.read()
-    c, r, w, h = selection.x, selection.y, selection.w, selection.h
-    track_window = (c, r, w, h)
-    roi = frame[r:r + h, c:c + w]
-    hsv_roi = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
-    if not param:
-        param = PARAM_DEFAULT
     lower_color_bound = param['lower_color_bound']
     upper_color_bound = param['upper_color_bound']
     color_channel = param['color_channel']
     channel_range = param['channel_range']
     bin_nb = param['bin_nb']
 
-    mask = cv2.inRange(hsv_roi, np.array(lower_color_bound), np.array(upper_color_bound))
-    roi_hist = cv2.calcHist([hsv_roi], color_channel, mask, bin_nb, channel_range)
-    cv2.normalize(roi_hist, roi_hist, 0, 255, cv2.NORM_MINMAX)
+    t = selection.t
+    cap.set(cv2.CAP_PROP_POS_FRAMES, t)
+    _, frame = cap.read()
 
+    track_window = selection.get_window()
+    roi = selection.get_roi(frame)
+
+    roi_hist = hsv_hist(roi, lower_color_bound, upper_color_bound,
+                        color_channel, bin_nb, channel_range)
     term_crit = (cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 1)
     init_input = {'roi_hist': roi_hist, 'term_crit': term_crit, 'init_lag': 1,
-                  'start_track': t, 'selection_color': selection.color, 'selection_name': selection.name }
+                  'start_track': t, 'selection_color': selection.color, 'selection_name': selection.name}
     step_input = {'track_window': track_window, 'computed_selection': selection, 'track_started': False}
     return init_input, step_input
 
